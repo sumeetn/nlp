@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="common.css">
+<!-- <link rel="stylesheet"
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css" /> -->
+<title>Rz fast upload</title>
+<script type="text/javascript">
+	FileAPI = {
+		debug : true,
+	};
+</script>
+<script src="js/angular-file-upload-shim.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.js"></script>
+<script src="js/angular-file-upload.js"></script>
+<script src="js/upload.js"></script>
+</head>
+
+<body ng-app="fileUpload" ng-controller="MyCtrl">
+
+<div class="bb">
+    <h1>Resume upload</h1> 
+    <i>faster</i>
+</div>
+
+	
+
+	<div class="upload-div">
+
+		<div class="upload-buttons">
+			choose a resume file(.doc only): <input type="file"
+				ng-file-select="onFileSelect($files)" onclick="this.value=null">
+			<br />
+
+		</div>
+		<br />
+		<div class="err" ng-show="errorMsg != null">{{errorMsg}}</div>
+		<br /> Progress: <br /> <br />
+		<div ng-show="selectedFiles != null">
+			<div class="sel-file" ng-repeat="f in selectedFiles">
+				{{($index + 1) + '.'}} <img ng-show="dataUrls[$index]"
+					ng-src="{{dataUrls[$index]}}">
+				<button class="button" ng-click="start($index)"
+					ng-show="progress[$index] < 0">Start</button>
+				<span class="progress" ng-show="progress[$index] >= 0">
+					<div style="width: {{progress[$index]">{{progress[$index]}}%</div>
+				</span>
+				<button class="button" ng-click="abort($index)"
+					ng-show="hasUploader($index) && progress[$index] < 100">Abort</button>
+				{{f.name}} - size: {{f.size}}B - type: {{f.type}}
+			</div>
+		</div>
+		<div class="response" ng-show="uploadResult.length > 0">
+
+			<ul>
+				<li ng-repeat="result in uploadResult">
+					<ul>
+						<li ng-repeat="item in result.result">
+							<div data-ng-show="item.name">
+								<label>Name:</label> <input type="text" ng-model="item.name"
+									placeholder={{item.name}} size="{{item.name.length}}">
+							</div>
+							<div data-ng-show="item.email">
+								<label>Email:</label> <input type="text" ng-model="item.email"
+									placeholder={{item.email}} size="{{item.email.length}}">
+							</div>
+							<div data-ng-show="item.mobile">
+								<label>Contact No :</label> <input type="text"
+									ng-model="item.mobile" placeholder={{item.mobile}}
+									size="{{item.mobile.length}}">
+							</div>
+						</li>
+					</ul>
+
+				</li>
+			</ul>
+		</div>
+	</div>
+
+</body>
+</html>
