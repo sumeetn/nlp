@@ -1,12 +1,9 @@
 package com.smn.nlp.ui.upload;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,9 +14,9 @@ import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import com.synerzip.rezoomex.extractor.DocExtractor;
-import com.synerzip.rezoomex.extractor.NEExtractor;
-import com.synerzip.rezoomex.extractor.NEResult;
+import com.smn.nlp.ner.DocExtractor;
+import com.smn.nlp.ner.NEExtractor;
+import com.smn.nlp.ner.NEResult;
 
 public class FileUpload extends HttpServlet {
 
