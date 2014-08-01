@@ -21,7 +21,7 @@
 					<webapps>
 						<webapp>
 							<contextPath>/nlp-ui</contextPath>
-							<groupId>com.synerzip.rezoomex</groupId>
+							<groupId>com.smn.nlp</groupId>
 							<artifactId>nlp-ui</artifactId>
 							<version>0.0.1-SNAPSHOT</version>
 							<type>war</type>

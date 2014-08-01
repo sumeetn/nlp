@@ -2,7 +2,7 @@
 <web-app>
 	<servlet>
 		<servlet-name>fileUpload</servlet-name>
-		<servlet-class>com.syn.rz.upload.FileUpload</servlet-class>
+		<servlet-class>com.smn.nlp.ui.upload.FileUpload</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
@@ -26,7 +26,7 @@
 	</servlet-mapping>
 	<filter>
 		<filter-name>cors_filter</filter-name>
-		<filter-class>com.syn.rz.upload.CORSFilter</filter-class>
+		<filter-class>com.smn.nlp.ui.upload.CORSFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>cors_filter</filter-name>
