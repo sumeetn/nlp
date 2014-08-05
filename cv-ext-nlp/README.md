@@ -1,7 +1,7 @@
 nlp
 ===
 
-CV extraction
+CV extraction (Angular Js from -> <a href="https://github.com/danialfarid/angular-file-upload">danialfarid</a>)
 
 Pre-requisite
 Maven 3
