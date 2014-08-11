@@ -21,7 +21,7 @@ public class NEExtractorTest extends TestCase {
 		NEExtractor ne = new NEExtractor(text);
 
 		NEResult result = new NEResult("sumeet.nikam@yahoo.com",
-				"+91 7276099903", "Sumeet Nikam");
+				"7276099903", "Sumeet Nikam");
 
 		assertEquals(result, ne.getResult());
 	}
