@@ -9,6 +9,8 @@ import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.apache.poi.hwpf.usermodel.HeaderStories;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
+import com.smn.nlp.preprocess.Sanitize;
+
 public class DocExtractor {
 
 	public String readDocument(String fileName) {
@@ -49,7 +51,10 @@ public class DocExtractor {
 		/** Get the total number of paragraphs **/
 		String[] paragraphs = we.getParagraphText();
 		for (int i = 0; i < paragraphs.length; i++) {
-			sb.append(paragraphs[i].toString());
+			String paragraph = paragraphs[i].toString();
+			
+			//String santitizedText = Sanitize.removeNonPrintable(paragraph);
+			sb.append(paragraph);
 		}
 		return sb.toString();
 	}

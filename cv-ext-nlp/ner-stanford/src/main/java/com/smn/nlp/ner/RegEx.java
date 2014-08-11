@@ -1,24 +1,32 @@
 package com.smn.nlp.ner;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.smn.nlp.ner.Entity.SearchedEntity;
+
 public class RegEx {
 	
-	public static Set<String> getContent(String text,String pattern) {
+	public static List<SearchedEntity> getContent(String text,String pattern) {
 
-		Set<String> contentList = new HashSet<String>();
+		List<SearchedEntity> contentList = new ArrayList<SearchedEntity>();
 		
 		Pattern p = Pattern.compile(pattern);
 		Matcher m = p.matcher(text);
 		while (m.find()) {
-			contentList.add(m.group(1));
+			SearchedEntity se = new SearchedEntity(m.group(1), m.start(1), m.end(1));
+			contentList.add(se);
 		}
 		return contentList;
 
 	}
+	
+	
+	
 	
 	public static Set<String> getContent(String text,Pattern p) {
 

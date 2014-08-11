@@ -17,13 +17,14 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import com.smn.nlp.ner.DocExtractor;
 import com.smn.nlp.ner.NEExtractor;
 import com.smn.nlp.ner.NEResult;
+import com.smn.nlp.preprocess.Sanitize;
 
 public class FileUpload extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
-		
+
 		try {
 			StringBuilder sb = new StringBuilder("{\"result\": [");
 
@@ -41,7 +42,6 @@ public class FileUpload extends HttpServlet {
 					if (item.getName() != null) {
 						sb.append("{");
 						NEResult nerResult = textAnalysis(item.openStream());
-						
 
 						sb.append("\"name\":\"").append(nerResult.getName())
 								.append("\",");
@@ -96,12 +96,15 @@ public class FileUpload extends HttpServlet {
 		 * System.out.println(" ** read complete **"); } catch (Exception ex) {
 		 * ex.printStackTrace(); }
 		 */
+
 		DocExtractor ext = new DocExtractor();
+
 		/** Method call to read the document (demonstrate some useage of POI) **/
 		String text = ext.readDocument(stream);
+		text = text.replaceAll("\\p{C}", "?");
 		NEExtractor ne = new NEExtractor(text);
-
 		return ne.getResult();
+
 	}
 
 	protected String read(InputStream stream) {

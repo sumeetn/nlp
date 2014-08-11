@@ -67,6 +67,10 @@ public class NEResult {
 		this.name = name;
 	}
 
+	public NEResult() {
+	
+	}
+
 	@Override
 	public String toString() {
 		return "NEResult [emailId=" + emailId + ", mobileNo=" + mobileNo
